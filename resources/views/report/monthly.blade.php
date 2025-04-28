@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <div class="container">
@@ -6,7 +6,7 @@
 
         <div class="row mb-3">
             <div class="col-md-6">
-                <form method="GET" action="{{ route('reports.monthly') }}">
+                <form method="GET" action="{{ route('report.monthly') }}">
                     <div class="row">
                         <div class="col-md-5">
                             <select name="month" class="form-select">
@@ -32,8 +32,7 @@
                 </form>
             </div>
             <div class="col-md-6 text-end">
-                <a href="{{ route('reports.monthly.export', ['month' => $month, 'year' => $year]) }}"
-                    class="btn btn-success">
+                <a href="" class="btn btn-success">
                     Export Excel
                 </a>
             </div>

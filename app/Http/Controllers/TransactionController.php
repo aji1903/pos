@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\Orders;
 
-use App\Models\Orders_Details;
+use App\Models\OrdersDetails;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -64,7 +64,7 @@ class TransactionController extends Controller
 
         $qty = $request->qty;
         foreach ($qty as $key => $data) {
-            Orders_Details::create([
+            OrdersDetails::create([
                 'order_id' => $order->id,
                 'product_id' => $request->product_id[$key],
                 'qty' => $request->qty[$key],
@@ -87,14 +87,14 @@ class TransactionController extends Controller
     public function show(string $id)
     {
         $orders = Orders::findOrFail($id);
-        $orderDetails = Orders_Details::with('product')->where('order_id', $id)->get();
+        $orderDetails = OrdersDetails::with('product')->where('order_id', $id)->get();
         $title =   "Order Details Of = " . $orders->order_code;
         return view('pos.show', compact('orders', 'orderDetails', 'title'));
     }
     public function print($id)
     {
         $orders = Orders::findOrFail($id);
-        $orderDetails = Orders_Details::with('product')->where('order_id', $id)->get();
+        $orderDetails = OrdersDetails::with('product')->where('order_id', $id)->get();
 
         return view('pos.print-struk', compact('orders', 'orderDetails'));
     }

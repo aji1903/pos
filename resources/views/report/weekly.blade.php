@@ -6,13 +6,13 @@
 
         <div class="row mb-3">
             <div class="col-md-8">
-                <form method="GET" action="{{ route('reports.weekly') }}">
+                <form method="GET" action="{{ route('report.weekly') }}">
                     <div class="row">
                         <div class="col-md-5">
-                            <input type="date" name="start_date" class="form-control" value="{{ $startDate }}">
+                            <input type="date" name="start_date" class="form-control" value="{{ $dt['startDate'] }}">
                         </div>
                         <div class="col-md-5">
-                            <input type="date" name="end_date" class="form-control" value="{{ $endDate }}">
+                            <input type="date" name="end_date" class="form-control" value="{{ $dt['endDate'] }}">
                         </div>
                         <div class="col-md-2">
                             <button type="submit" class="btn btn-primary">Filter</button>
@@ -21,8 +21,7 @@
                 </form>
             </div>
             <div class="col-md-4 text-end">
-                <a href="{{ route('reports.weekly.export', ['start_date' => $startDate, 'end_date' => $endDate]) }}"
-                    class="btn btn-success">
+                <a href="" class="btn btn-success">
                     Export Excel
                 </a>
             </div>
@@ -32,8 +31,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <h5>Periode: {{ \Carbon\Carbon::parse($startDate)->format('d M Y') }} -
-                            {{ \Carbon\Carbon::parse($endDate)->format('d M Y') }}</h5>
+                        <h5>Periode: {{ \Carbon\Carbon::parse($dt['startDate'])->format('d M Y') }} -
+                            {{ \Carbon\Carbon::parse($dt['endDate'])->format('d M Y') }}</h5>
                     </div>
                     <div class="col-md-4">
                         <h5>Total Transaksi: {{ $totalTransactions }}</h5>

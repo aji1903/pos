@@ -8,9 +8,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $title ?? '' }}</h5>
                         <div class='mt-4 mb-3'>
-                            <div align='right' class='mb-3'>
-                                <a class='btn btn-info'href='{{ route('pos.create') }}'>Add pos</a>
-                            </div>
+
                             <table class='table table-bordered'>
                                 <thead>
                                     <tr>
@@ -40,8 +38,7 @@
 
                                             <td>{{ $data->order_status ? 'Paid' : 'Unpaid' }}</td>
                                             <td>
-                                                <a href='{{ route('pos.show', $data->id) }}'
-                                                    class='btn btn-secondary btn-sm'>
+                                                <a href='{{ route('pos.show', $data->id) }}' class='btn btn-secondary btn-sm'>
                                                     <i class='bi bi-eye'></i>
                                                 </a>
                                                 <a href='' class='btn btn-success btn-sm'>
@@ -56,15 +53,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Example Card</h5>
-                        <p>This is an examle page with no contrnt. You can use it as a starter for your custom pages.</p>
-                    </div>
-                </div>
 
-            </div>
         </div>
 
     </section>

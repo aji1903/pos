@@ -23,9 +23,18 @@ class LoginController extends Controller
         $credential = $request->only('email', 'password');
         // Auth : class dari laravel
         if (Auth::attempt($credential)) {
-            Alert::success('success', 'Success Login');
+            $level_user = Auth::user()->level_id;
 
-            return redirect('dashboard')->with('success', 'Success Login');
+            if ($level_user == 1) {
+                Alert::success('success', 'Cashier Success Login');
+                return redirect('dashboard')->with('success', 'Cashier Success Login');
+            } elseif ($level_user == 2) {
+                Alert::success('success', 'Leader Success Login');
+                return redirect('dashboard')->with('success', 'Leader Success Login');
+            } elseif ($level_user == 3) {
+                Alert::success('success', 'Admin Success Login');
+                return redirect('dashboard')->with('success', 'Admin Success Login');
+            }
         } else {
 
 

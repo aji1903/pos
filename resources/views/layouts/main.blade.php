@@ -53,6 +53,7 @@
 
     <main id="main" class="main">
 
+
         <div class="pagetitle">
             <h1>@yield('title')</h1>
             <nav>

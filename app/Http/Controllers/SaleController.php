@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Orders;
-use App\Models\Orders_Details;
+use App\Models\OrdersDetails;
 
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -65,7 +65,7 @@ class SaleController extends Controller
 
         // $qty = $request->qty;
         foreach ($cartItems as $item) {
-            Orders_Details::create([
+            OrdersDetails::create([
                 'order_id' => $order->id,
                 'product_id' => $item['productId'],
                 'qty' => $item['qty'],

@@ -268,19 +268,32 @@
                                 </p>
                             </div>
                         </div>
-                        <div x-show="filteredProducts().length" class="grid grid-cols-4 gap-4 pb-3 m-8">
+                        <div x-show="filteredProducts().length" class="grid grid-cols-4 gap-6 pb-3 m-8">
                             <template x-for="product in filteredProducts()" :key="product.id">
                                 <div role="button"
-                                    class="select-none cursor-pointer transition-shadow overflow-hidden rounded-2xl bg-white shadow hover:shadow-lg "
+                                    class="select-none cursor-pointer transition-shadow overflow-hidden rounded-2xl bg-white shadow hover:shadow-lg"
                                     :title="product.name" x-on:click="addToCart(product)">
-                                    <img :src="product.image" :alt="product.name" width="250">
-                                    <div class="flex pb-3 px-3 text-sm -mt-3">
-                                        <p class="flex-grow truncate mr-1" x-text="product.name"></p>
-                                        <p class="nowrap font-semibold" x-text="priceFormat(product.price)"></p>
+
+                                    <!-- Gambar Produk -->
+                                    <div class="relative w-50 h-50">
+                                        <!-- Menggunakan aspect-square untuk rasio 1:1 -->
+                                        <img :src="product.image" :alt="product.name"
+                                            class="w-full h-full object-cover rounded-t-2xl">
+                                    </div>
+
+                                    <!-- Nama Produk dan Harga -->
+                                    <div class="p-3 flex flex-col gap-1">
+                                        <!-- Nama Produk -->
+                                        <p class="text-lg font-semibold line-clamp-2 h-14" x-text="product.name"></p>
+
+                                        <!-- Harga -->
+                                        <p class="font-semibold text-xl text-primary"
+                                            x-text="priceFormat(product.price)"></p>
                                     </div>
                                 </div>
                             </template>
                         </div>
+
                     </div>
                 </div>
             </div>

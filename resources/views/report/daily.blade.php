@@ -6,7 +6,7 @@
 
         <div class="row mb-3">
             <div class="col-md-6">
-                <form method="GET" action="{{ route('reports.daily') }}">
+                <form method="GET" action="{{ route('report.daily') }}">
                     <div class="input-group">
                         <input type="date" name="date" class="form-control" value="{{ $date }}">
                         <button type="submit" class="btn btn-primary">Filter</button>
@@ -14,7 +14,7 @@
                 </form>
             </div>
             <div class="col-md-6 text-end">
-                <a href="{{ route('reports.daily.export', ['date' => $date]) }}" class="btn btn-success">
+                <a href="" class="btn btn-success">
                     Export Excel
                 </a>
             </div>
@@ -47,27 +47,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($orders as $key => $order)
+                            @php
+                                $no = 1;
+                            @endphp
+                            @foreach ($orders as $order)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
-                                    <td>{{ $order->order_code }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($order->order_date)->format('d/m/Y H:i') }}</td>
-                                    <td>Rp {{ number_format($order->order_amount, 0, ',', '.') }}</td>
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $order->order['order_code'] }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($order['order_date'])->format('d/m/Y H:i') }}</td>
+                                    <td>Rp {{ number_format($totalAmount, 0, ',', '.') }}</td>
                                     <td>
                                         <button class="btn btn-sm btn-info" data-bs-toggle="modal"
-                                            data-bs-target="#orderDetailModal{{ $order->id }}">
+                                            data-bs-target="#orderDetailModal{{ $order['id'] }}">
                                             Lihat
                                         </button>
                                     </td>
                                 </tr>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="orderDetailModal{{ $order->id }}" tabindex="-1"
+                                <div class="modal fade" id="orderDetailModal{{ $order['id'] }}" tabindex="-1"
                                     aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Detail Order: {{ $order->order_code }}</h5>
+                                                <h5 class="modal-title">Detail Order: {{ $order['order_code'] }}</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
@@ -82,7 +85,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($order->orderDetails as $detail)
+                                                        @foreach ($orders as $detail)
                                                             <tr>
                                                                 <td>{{ $detail->product->product_name }}</td>
                                                                 <td>{{ $detail->qty }}</td>
@@ -98,7 +101,7 @@
                                                     <tfoot>
                                                         <tr>
                                                             <th colspan="3">Total</th>
-                                                            <th>Rp {{ number_format($order->order_amount, 0, ',', '.') }}
+                                                            <th>Rp {{ number_format($totalAmount, 0, ',', '.') }}
                                                             </th>
                                                         </tr>
                                                     </tfoot>
