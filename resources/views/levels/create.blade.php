@@ -16,8 +16,8 @@
                             </div>
                             <div class='mb-3'>
                                 <button class='btn btn-primary' type='submit'>Save</button>
-                                <button class='btn btn-danger' type='reset'>Cancel</button>
-                                <a href="{{ url()->previous() }}" class='text-primary'>Back</a>
+                                {{--  <button class='btn btn-danger' type='reset'>Cancel</button>  --}}
+                                <a href="{{ url()->previous() }}" class='btn btn-danger'>Back</a>
                         </form>
                     </div>
                 </div>

@@ -54,14 +54,7 @@
             </div>
         </div>
 
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5>Grafik Pendapatan Harian</h5>
-            </div>
-            <div class="card-body">
-                <canvas id="monthlyChart" height="100"></canvas>
-            </div>
-        </div>
+
 
         <div class="card">
             <div class="card-body">

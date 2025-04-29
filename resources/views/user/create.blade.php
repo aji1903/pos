@@ -2,6 +2,26 @@
 @section('title', 'Add New User')
 @section('content')
     <section class='section'>
+
+        @if ($errors->has('email'))
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Email Sudah Terdaftar',
+                    text: '{{ $errors->first('email') }}'
+                });
+            </script>
+        @endif
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sukses!',
+                    text: '{{ session('success') }}'
+                });
+            </script>
+        @endif
+
         <div class='row'>
             <div class='col-lg-12'>
                 <div class='card'>
@@ -35,8 +55,8 @@
                             </div>
                             <div class='mb-3'>
                                 <button class='btn btn-primary' type='submit'>Save</button>
-                                <button class='btn btn-danger' type='reset'>Cancel</button>
-                                <a href="{{ url()->previous() }}" class='text-primary'>Back</a>
+                                {{--  <button class='' type='reset'>Cancel</button>  --}}
+                                <a href="{{ url()->previous() }}" class='btn btn-danger'>Back</a>
                         </form>
                     </div>
                 </div>

@@ -44,14 +44,7 @@
             </div>
         </div>
 
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5>Grafik Pendapatan Harian</h5>
-            </div>
-            <div class="card-body">
-                <canvas id="dailyChart" height="100"></canvas>
-            </div>
-        </div>
+
 
         <div class="card">
             <div class="card-body">
@@ -75,7 +68,7 @@
                                 <tr>
                                     <td>{{ \Carbon\Carbon::parse($date)->format('d F Y') }}</td>
                                     <td>{{ $dailyOrders->count() }}</td>
-                                    <td>Rp {{ number_format($dailyOrders->sum('order_amount'), 0, ',', '.') }}</td>
+                                    <td>Rp {{ number_format($dailyOrders->sum('order_subtotal'), 0, ',', '.') }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

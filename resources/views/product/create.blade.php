@@ -6,9 +6,9 @@
             <div class='col-lg-12'>
                 <div class='card'>
                     <div class='card-body'>
-                        <div align='right' class='mt-3'>
+                        {{--  <div align='right' class='mt-3'>
                             <a href="{{ url()->previous() }}" class='btn btn-primary'>Back</a>
-                        </div>
+                        </div>  --}}
                         <h5 class='card-title'>Add New product </h5>
                         <form action='{{ route('product.store') }}' method='post' enctype='multipart/form-data'>
                             @csrf
@@ -54,8 +54,8 @@
                             </div>
                             <div class='mb-3'>
                                 <button class='btn btn-success' type='submit'>Save</button>
-                                <button class='btn btn-danger' type='reset'>Cancel</button>
-
+                                {{--  <button class='btn btn-danger' type='reset'>Cancel</button>  --}}
+                                <a href="{{ url()->previous() }}" class='btn btn-danger'>Back</a>
                         </form>
                     </div>
                 </div>

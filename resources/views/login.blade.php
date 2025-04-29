@@ -76,7 +76,7 @@
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
                                                 <input type="email" name="email" class="form-control"
-                                                    id="yourUsername" required>
+                                                    id="yourUsername" placeholder="Enter Your Email"required>
                                                 <div class="invalid-feedback">Please enter your Email.</div>
                                             </div>
                                         </div>
@@ -84,7 +84,7 @@
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Password</label>
                                             <input type="password" name="password" class="form-control"
-                                                id="yourPassword" required>
+                                                id="yourPassword" placeholder="Enter Your Password"required>
                                             <div class="invalid-feedback">Please enter your Password!</div>
                                         </div>
 
@@ -109,7 +109,7 @@
                                 <!-- You can delete the links only if you purchased the pro version. -->
                                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                                Designed by <a href="https://bootstrapmade.com/">MineME</a>
                             </div>
 
                         </div>

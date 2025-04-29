@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Level;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Validation\ValidationException;
 
 
 class UserController extends Controller
@@ -34,14 +36,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        try{
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'level_id' => 'required|integer',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6',
+        ]);
+
         user::create([
             'name' => $request->name,
             'level_id' => $request->level_id,
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
-
-        return redirect()->to('user');
+        Alert::success('Success', 'Add User Successfully');
+        return redirect()->to('user')->with('success');
+    }catch (ValidationException $e) {
+        if ($e->validator->errors()->has('email')) {
+            Alert::error('Error', 'Email sudah terdaftar');
+        }
+        return redirect()->back()->withErrors($e->errors())->withInput();
+    }
     }
 
     /**
